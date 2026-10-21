@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Black Guardian Jiu-Jitsu</title>
+<meta name="description" content="Black Guardian Jiu-Jitsu, Santa Terezinha, Belo Horizonte. Jiu-jitsu adulto, feminino, infantil e defesa pessoal com o professor Isaak Avelar, faixa preta.">
+<meta name="theme-color" content="#0b0b08">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@800;900&family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{margin:0}
+/* Layout: identidade da logo (preto + cáqui, letra stencil desgastada). Faixas escuras horizontais, o Dobermann como guardião do hero, cáqui só no que importa. */
+:root{
+  --ink:#0b0b08;        /* preto da logo */
+  --mat:#13140e;
+  --mat-2:#1c1d15;
+  --khaki:#bdbf9a;      /* cáqui da logo */
+  --khaki-hi:#d3d5b0;
+  --khaki-dim:#7f8165;
+  --gi:#efeee4;         /* algodão do kimono */
+  --muted:#a2a38f;
+  --line:rgba(189,191,154,.16);
+  --wa:#1fa855;
+  --f-stencil:"Big Shoulders Stencil Display","Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--gi);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.92;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--khaki);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--khaki)}
+section{padding-block:clamp(64px,10vw,120px)}
+:focus-visible{outline:2px solid var(--khaki-hi);outline-offset:3px}
+/* textura desgastada da logo, usada nos títulos grandes */
+.worn{background:var(--khaki);-webkit-background-clip:text;background-clip:text;color:transparent;
+  background-image:radial-gradient(circle at 20% 30%,transparent 0 1.2px,var(--khaki) 1.6px),radial-gradient(circle at 70% 60%,transparent 0 .9px,var(--khaki) 1.3px);
+  background-size:23px 19px,31px 27px}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:2px;font:600 15px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;transition:transform .15s ease,background .15s ease,border-color .15s ease;cursor:pointer}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-main{background:var(--khaki);color:var(--ink)}
+.btn-main:hover{background:var(--khaki-hi);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--gi);background:transparent}
+.btn-ghost:hover{border-color:var(--khaki)}
+
+/* Topo */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(11,11,8,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;flex:none}
+.brand b{font:800 21px/1 var(--f-stencil);letter-spacing:.05em;text-transform:uppercase;color:var(--khaki)}
+.nav-links{display:flex;gap:28px;font:500 14px/1 var(--f-body);letter-spacing:.04em}
+.nav-links a{text-decoration:none;color:var(--muted)}
+.nav-links a:hover{color:var(--khaki)}
+.nav .btn{min-height:42px;padding:0 16px;font-size:13px}
+@media (max-width:860px){.nav-links{display:none}}
+@media (max-width:420px){.nav .btn span{display:none}.nav .btn{padding:0 12px}.brand b{font-size:18px}}
+
+/* Hero */
+.hero{position:relative;padding-block:clamp(36px,6vw,72px) 0;overflow:hidden;isolation:isolate}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(60% 70% at 78% 40%,rgba(189,191,154,.13),transparent 65%),
+  repeating-linear-gradient(90deg,rgba(189,191,154,.03) 0 1px,transparent 1px 64px),
+  repeating-linear-gradient(0deg,rgba(189,191,154,.03) 0 1px,transparent 1px 64px)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(16px,4vw,48px);align-items:end}
+.hero-copy{min-width:0;padding-bottom:clamp(40px,6vw,80px)}
+.hero h1{font-family:var(--f-stencil);font-size:clamp(60px,11.5vw,150px);margin-top:20px;letter-spacing:.01em}
+.hero h1 .worn{display:inline-block}
+.hero .lede{max-width:34em;margin-top:24px;font-size:clamp(17px,1.6vw,20px);color:#d8d7cb}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:28px;font:500 13px/1.4 var(--f-mono);color:var(--muted);letter-spacing:.04em}
+.hero-meta span{display:flex;align-items:center;gap:8px}
+.hero-meta i{width:6px;height:6px;background:var(--khaki);display:inline-block;transform:rotate(45deg)}
+
+/* Mascote */
+.stage{position:relative;min-width:0;align-self:stretch;display:grid;place-items:end center;min-height:500px;perspective:900px}
+.stage .ring{position:absolute;z-index:-1;width:min(92%,470px);aspect-ratio:1;max-width:100%;top:4%;left:50%;translate:-50% 0;opacity:.09;filter:grayscale(.2)}
+@media (prefers-reduced-motion:no-preference){.stage .ring{animation:spin 90s linear infinite}@keyframes spin{to{rotate:360deg}}}
+.dog{position:relative;width:min(100%,360px);margin-bottom:-2px;cursor:pointer;border:0;background:none;padding:0;transform-style:preserve-3d;transition:transform .25s cubic-bezier(.2,.8,.2,1);-webkit-tap-highlight-color:transparent}
+.dog .dogsvg{display:block;width:100%;height:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.55))}
+/* animações do Guardião */
+.dogsvg .d-head{transform-box:view-box;transform-origin:200px 620px;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.dogsvg .ear{transform-box:view-box;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.dogsvg .ear-l{transform-origin:96px 240px}.dogsvg .ear-r{transform-origin:304px 240px}
+.dogsvg .lid{transform-box:fill-box;transform-origin:center;transform:scaleY(0);transition:transform .07s ease}
+.dogsvg.blink .lid{transform:scaleY(1)}
+.dogsvg .glow{opacity:0;transition:opacity .3s ease;mix-blend-mode:screen}
+.dogsvg.bark .glow,.dog:hover .dogsvg .glow,.fab:hover .dogsvg .glow{opacity:1}
+.dogsvg.bark .d-head{transform:rotate(-4deg) translateY(-10px)}
+.dogsvg.perk .ear-l,.dog:hover .dogsvg .ear-l,.fab:hover .dogsvg .ear-l{transform:rotate(-6deg)}
+.dogsvg.perk .ear-r,.dog:hover .dogsvg .ear-r,.fab:hover .dogsvg .ear-r{transform:rotate(6deg)}
+@media (prefers-reduced-motion:no-preference){
+  .dogsvg .d-head > image,.dogsvg .d-head > g,.dogsvg .d-head > ellipse,.dogsvg .d-head > circle{animation:breathe 3.6s ease-in-out infinite}
+  .dogsvg .d-body{animation:breathe 3.6s ease-in-out infinite;animation-delay:-.2s}
+  @keyframes breathe{50%{translate:0 3px}}
+  .dogsvg .ear-l{animation:twitchL 7s ease-in-out infinite}
+  .dogsvg .ear-r{animation:twitchR 7s ease-in-out infinite 1.3s}
+  @keyframes twitchL{0%,92%,100%{rotate:0deg}95%{rotate:-7deg}}
+  @keyframes twitchR{0%,92%,100%{rotate:0deg}95%{rotate:7deg}}
+}
+.dog.hop{animation:hop .5s cubic-bezier(.3,.7,.3,1)}
+@keyframes hop{0%{translate:0 0}35%{translate:0 -26px}60%{translate:0 0}75%{translate:0 -6px}100%{translate:0 0}}
+.bubble{position:absolute;top:8%;right:-2%;max-width:220px;background:var(--gi);color:var(--ink);padding:12px 16px;border-radius:14px 14px 14px 2px;font:600 15px/1.3 var(--f-body);box-shadow:0 10px 30px rgba(0,0,0,.4);transform-origin:0 100%;transition:opacity .2s ease,scale .2s ease;pointer-events:none}
+.bubble b{font:900 22px/1 var(--f-stencil);text-transform:uppercase;display:block;margin-bottom:2px}
+.bubble.hide{opacity:0;scale:.85}
+.bubble .tag{display:block;margin-bottom:6px;font:500 10px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:#5d5e4a}
+.bubble .tag:empty,.bubble span:empty{display:none}
+.bubble.golpe{background:var(--ink);color:var(--gi);border:1.5px solid var(--khaki);border-radius:2px;max-width:250px}
+.bubble.golpe .tag{color:var(--khaki-dim)}
+.bubble.golpe b{color:var(--khaki);font-size:30px}
+.bubble.grito{background:var(--khaki);border-radius:0;box-shadow:none;padding:30px 34px;text-align:center;rotate:-5deg;
+  clip-path:polygon(50% 0,60% 14%,78% 4%,80% 22%,100% 20%,90% 38%,100% 52%,86% 62%,96% 82%,76% 78%,68% 100%,54% 84%,38% 100%,32% 80%,10% 90%,16% 68%,0 58%,12% 44%,2% 24%,22% 24%,24% 4%,40% 14%)}
+.bubble.grito b{font-size:32px;margin:0}
+.bubble.grito span{font-size:13px}
+.bubble.pensa{border-radius:28px;font-style:italic;font-weight:500}
+.bubble.pensa::before,.bubble.pensa::after{content:"";position:absolute;background:var(--gi);border-radius:50%}
+.bubble.pensa::before{width:14px;height:14px;left:6px;bottom:-16px}
+.bubble.pensa::after{width:8px;height:8px;left:-4px;bottom:-28px}
+.pts{position:absolute;left:12%;top:34%;z-index:3;font:900 40px/1 var(--f-stencil);color:var(--khaki);text-shadow:0 4px 18px rgba(0,0,0,.6);pointer-events:none;white-space:nowrap}
+.pts small{display:block;font:500 11px/1.2 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gi)}
+@media (prefers-reduced-motion:no-preference){.pts{animation:pts 1.4s cubic-bezier(.2,.8,.2,1) forwards}@keyframes pts{0%{opacity:0;translate:0 10px;scale:.6}20%{opacity:1;scale:1.1}70%{opacity:1}100%{opacity:0;translate:0 -50px;scale:1}}}
+.hint{position:absolute;bottom:18px;left:50%;translate:-50% 0;font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:rgba(11,11,8,.75);padding:7px 10px;border:1px solid var(--line);white-space:nowrap;pointer-events:none}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-copy{padding-bottom:8px}
+  .stage{min-height:0;padding-top:12px}
+  .dog{width:min(76%,290px)}
+  .bubble{right:2%;top:4%;max-width:180px}
+}
+
+/* Faixa preta (divisor) */
+.belt{position:relative;height:36px;background:#050504;border-block:1px solid #2a2b20;display:flex;justify-content:flex-end;overflow:hidden}
+.belt::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px)}
+.belt-bar{position:relative;width:min(34%,320px);background:var(--khaki);display:flex;align-items:center;gap:10px;padding-left:18%;margin-right:8%}
+.belt-bar i{width:6px;height:100%;background:var(--ink)}
+@media (prefers-reduced-motion:no-preference){
+  .belt-bar i{animation:tape .5s cubic-bezier(.2,.8,.2,1) both}
+  .belt-bar i:nth-child(1){animation-delay:.25s}.belt-bar i:nth-child(2){animation-delay:.4s}.belt-bar i:nth-child(3){animation-delay:.55s}
+  @keyframes tape{from{transform:scaleY(.15)}to{transform:scaleY(1)}}
+}
+
+/* Professor */
+.coach-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,80px);align-items:start}
+.coach-grid > *{min-width:0}
+.portrait{position:relative;margin:0}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:530/660;object-fit:cover;border-radius:2px}
+.portrait figcaption{position:absolute;left:14px;bottom:14px;right:14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.portrait figcaption span{background:rgba(11,11,8,.85);border:1px solid var(--line);padding:7px 10px;font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--khaki)}
+.coach h2{font-family:var(--f-stencil);font-size:clamp(52px,7vw,96px);margin-top:18px}
+.coach .role{margin-top:12px;font:500 13px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.quote{margin:28px 0 0;padding-left:20px;border-left:2px solid var(--khaki);font-size:clamp(18px,1.8vw,21px);line-height:1.55;color:#e1e0d4;max-width:34em}
+.titles{list-style:none;margin:32px 0 0;padding:0;display:grid;border-top:1px solid var(--line)}
+.titles li{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.titles b{font:900 34px/1 var(--f-display);color:var(--khaki);font-variant-numeric:tabular-nums}
+.titles span{font-size:16px}
+.titles small{display:block;color:var(--muted);font-size:14px}
+.tree{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:24px;font:500 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tree b{color:var(--gi);font-weight:500}
+.tree i{width:18px;height:1px;background:var(--khaki-dim)}
+.coach .ig{display:inline-flex;align-items:center;gap:8px;margin-top:24px;text-decoration:none;color:var(--khaki);font-weight:600;border-bottom:1px solid var(--khaki-dim);padding-bottom:3px}
+.coach .ig svg{width:18px;height:18px}
+@media (max-width:860px){.coach-grid{grid-template-columns:1fr}.portrait{max-width:440px}.titles li{grid-template-columns:72px 1fr}}
+
+/* Modalidades */
+.programs{background:var(--mat)}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 40px;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head h2{font-size:clamp(44px,6.5vw,84px);margin-top:18px}
+.sec-head p{max-width:30em;color:var(--muted)}
+.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.prog{background:var(--mat);padding:28px 24px 30px;display:grid;grid-template-rows:auto auto 1fr auto;gap:14px;min-width:0;transition:background .2s ease}
+.prog:hover{background:var(--mat-2)}
+.prog .ph{aspect-ratio:4/3;max-width:100%;margin:-28px -24px 6px}
+.prog h3{font-size:34px}
+.prog p{color:var(--muted);font-size:15.5px}
+.prog .for{font:500 11px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--khaki);padding-top:14px;border-top:1px solid var(--line)}
+@media (max-width:1020px){.prog-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.prog-grid{grid-template-columns:1fr}}
+
+/* Placeholder de foto: trama de kimono */
+.ph{background-color:var(--mat-2);background-image:
+  radial-gradient(circle,rgba(189,191,154,.08) 0 2px,transparent 2.5px),
+  radial-gradient(circle,rgba(189,191,154,.05) 0 2px,transparent 2.5px);
+  background-size:9px 9px,9px 9px;background-position:0 0,4.5px 4.5px;
+  display:flex;align-items:flex-end;overflow:hidden;position:relative;border-radius:2px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph-label{position:relative;z-index:2;margin:14px;padding:7px 10px;background:rgba(11,11,8,.8);border:1px dashed rgba(189,191,154,.35);font:500 11px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ph.has-img .ph-label{display:none}
+
+/* Horários */
+.week{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.day{min-width:0;padding:18px 14px 20px;border-right:1px solid var(--line);display:grid;gap:12px;align-content:start;min-height:170px}
+.day:last-child{border-right:0}
+.day h4{margin:0;font:500 12px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.slots{display:grid;gap:8px}
+.slot{background:var(--khaki);color:var(--ink);padding:12px 12px 14px;border-radius:2px}
+.slot b{display:block;font:900 28px/1 var(--f-display)}
+.slot span{display:block;margin-top:6px;font-size:13px;line-height:1.3;font-weight:500}
+.day.off .rest{font:500 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(162,163,143,.5)}
+.sched-note{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;margin-top:20px;color:var(--muted);font-size:15px}
+@media (max-width:860px){
+  .week{grid-template-columns:1fr}
+  .day{grid-template-columns:72px 1fr;align-items:center;min-height:0;border-right:0;border-bottom:1px solid var(--line);padding:14px 16px}
+  .day:last-child{border-bottom:0}
+  .slot{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .slots{gap:6px}
+  .slot span{margin-top:0}
+}
+
+/* Primeira aula (faixa cáqui) */
+.first{background:var(--khaki);color:var(--ink)}
+.first .eyebrow{color:#3a3b2c}
+.first .eyebrow::before{background:var(--ink)}
+.first .sec-head p{color:#33342a}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+.step{min-width:0;border-top:3px solid var(--ink);padding-top:22px;display:grid;gap:12px}
+.step .n{font:900 64px/.8 var(--f-stencil)}
+.step h3{font-size:30px}
+.step p{color:#2b2c22}
+.first .btn-dark{background:var(--ink);color:var(--khaki)}
+.first .btn-dark:hover{background:#000;transform:translateY(-1px)}
+.first-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(36px,5vw,56px)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* Galeria */
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(120px,15vw,190px);gap:10px}
+.g1{grid-column:span 3;grid-row:span 2}.g2{grid-column:span 3}.g3{grid-column:span 2}.g4{grid-column:span 1}.g5{grid-column:span 2}.g6{grid-column:span 2}.g7{grid-column:span 2}
+@media (max-width:760px){
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .g1{grid-column:span 2;grid-row:span 2}.g2,.g5{grid-column:span 2}.g3,.g4,.g6,.g7{grid-column:span 1}
+}
+.insta-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;margin-top:24px;color:var(--muted)}
+.insta-row a{font:600 15px/1 var(--f-body);text-decoration:none;color:var(--khaki);border-bottom:2px solid var(--khaki);padding-bottom:4px}
+
+/* Local */
+.place{background:var(--mat)}
+.place-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:stretch}
+.place-grid > *{min-width:0}
+.addr{font:800 clamp(34px,4.6vw,56px)/.98 var(--f-display);text-transform:uppercase;margin-top:18px}
+.addr small{display:block;margin-top:14px;font:500 15px/1.5 var(--f-body);text-transform:none;color:var(--muted)}
+.facts{margin:32px 0 0;display:grid;border-top:1px solid var(--line)}
+.facts div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.facts dt{font:500 11px/1.9 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0}
+.place .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.mapcard{position:relative;min-height:360px;border:1px solid var(--line);background:var(--mat-2);overflow:hidden;display:block;text-decoration:none}
+.mapcard canvas{position:absolute;inset:0;width:100%;height:100%}
+.mapcard .pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-100%);display:grid;justify-items:center;gap:0}
+.mapcard .pin img{width:64px;height:64px;border:2px solid var(--khaki);border-radius:50%;background:var(--ink)}
+.mapcard .pin i{width:2px;height:24px;background:var(--khaki)}
+.mapcard .open{position:absolute;right:14px;bottom:14px;font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--khaki);background:rgba(11,11,8,.85);padding:9px 11px;border:1px solid var(--line)}
+@media (max-width:860px){.place-grid{grid-template-columns:1fr}.mapcard{min-height:280px}.facts div{grid-template-columns:100px 1fr}}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px)}
+.faq-grid > *{min-width:0}
+.faq-grid h2{font-size:clamp(44px,6vw,76px);margin-top:18px}
+details{border-bottom:1px solid var(--line)}
+details:first-child{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font:600 18px/1.35 var(--f-body)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:14px;height:14px;background:linear-gradient(var(--khaki),var(--khaki)) center/14px 2px no-repeat,linear-gradient(var(--khaki),var(--khaki)) center/2px 14px no-repeat;transition:transform .2s ease}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 22px;color:var(--muted);max-width:40em}
+@media (max-width:860px){.faq-grid{grid-template-columns:1fr}}
+
+/* CTA final */
+.final{position:relative;overflow:hidden;border-top:1px solid var(--line);isolation:isolate}
+.final .seal{position:absolute;z-index:-1;right:-6%;top:50%;translate:0 -50%;width:min(52vw,560px);max-width:100%;opacity:.1}
+.final h2{font-family:var(--f-stencil);font-size:clamp(56px,11vw,150px);margin-top:18px}
+.final p{margin-top:22px;max-width:32em;color:#d8d7cb;font-size:18px}
+.final .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.wa-num{display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px;font:500 14px/1 var(--f-mono);color:var(--muted);margin-top:18px}
+.wa-num code{color:var(--gi);font:inherit;user-select:all}
+.wa-num button{background:none;border:1px solid var(--line);color:var(--muted);font:500 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px;cursor:pointer;border-radius:2px}
+.wa-num button:hover{color:var(--khaki);border-color:var(--khaki)}
+
+footer{border-top:1px solid var(--line);padding-block:28px 110px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;align-items:center}
+footer .f-brand{display:flex;align-items:center;gap:10px}
+footer img{width:32px;height:32px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--khaki)}
+
+/* Guardião flutuante (WhatsApp) */
+.guard{position:fixed;right:max(8px,calc(env(safe-area-inset-right,0px) + 6px));bottom:0;z-index:55;display:flex;align-items:flex-end;gap:4px;pointer-events:none}
+.guard > *{pointer-events:auto}
+.say{display:flex;align-items:center;gap:10px;margin-bottom:calc(env(safe-area-inset-bottom,0px) + 70px);background:var(--gi);color:var(--ink);text-decoration:none;padding:11px 14px;border-radius:16px 16px 4px 16px;font:500 14px/1.25 var(--f-body);max-width:210px;box-shadow:0 10px 30px rgba(0,0,0,.45);transform-origin:100% 100%;transition:opacity .25s ease,scale .25s ease}
+.say b{font-weight:700}
+.say .say-wa{width:22px;height:22px;flex:none;color:var(--wa)}
+.say:hover{background:#fff}
+.guard.quiet .say{opacity:0;scale:.8;pointer-events:none}
+.fab{display:block;width:96px;margin-bottom:-6px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.6));transition:translate .35s cubic-bezier(.3,1.4,.5,1)}
+.fab .dogsvg{display:block;width:100%;height:auto}
+.guard.hidden .fab{translate:0 70%}
+.guard.hidden .say{opacity:0;scale:.8;pointer-events:none}
+.fab:hover{translate:0 -6px}
+@media (prefers-reduced-motion:no-preference){
+  .fab .d-head{animation:nod 4.5s ease-in-out infinite}
+  @keyframes nod{0%,70%,100%{rotate:0deg}76%{rotate:-6deg}82%{rotate:5deg}88%{rotate:-3deg}}
+}
+@media (max-width:560px){.fab{width:78px}.say{max-width:170px;font-size:13px;margin-bottom:calc(env(safe-area-inset-bottom,0px) + 56px)}}
+
+@media (prefers-reduced-motion:no-preference){
+  .rise{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+  .rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}
+  @keyframes rise{from{transform:translateY(14px);opacity:.001}to{transform:none;opacity:1}}
+}
+@media (prefers-reduced-motion:reduce){.dog{transition:none}.dog.hop{animation:none}}
+</style>
+<meta property="og:title" content="Black Guardian Jiu-Jitsu">
+<meta property="og:description" content="Jiu-jitsu em Santa Terezinha, BH, com o professor Isaak Avelar. Marque sua aula experimental.">
+<meta property="og:image" content="assets/logo.webp">
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.950L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.910-9.91S17.5 2 12.04 2Zm0 18.15a8.2 8.2 0 0 1-4.190-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 1 1 6.98 3.860Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.050.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M7 2.9h10A4.1 4.1 0 0 1 21.1 7v10a4.1 4.1 0 0 1-4.1 4.1H7A4.1 4.1 0 0 1 2.9 17V7A4.1 4.1 0 0 1 7 2.9Z"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Black Guardian Jiu-Jitsu, início">
+      <img src="assets/logo.webp" alt="" width="44" height="44">
+      <b>Black Guardian</b>
+    </a>
+    <nav class="nav-links" aria-label="Seções">
+      <a href="#professor">Professor</a>
+      <a href="#modalidades">Modalidades</a>
+      <a href="#horarios">Horários</a>
+      <a href="#local">Local</a>
+    </nav>
+    <a class="btn btn-main js-wa" href="#" target="_blank" rel="noopener" data-msg="hero"><svg><use href="#i-wa"/></svg><span>Agendar aula</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow rise">Jiu-Jitsu · Santa Terezinha · BH</p>
+        <h1 class="rise d1">Proteja.<br>Evolua.<br><span class="worn">Guarde.</span></h1>
+        <p class="lede rise d2">Jiu-jitsu para adultos, mulheres e crianças com o professor Isaak Avelar, faixa preta com 16 anos de tatame e pódio no Mundial CBJJE. Aula experimental para quem nunca treinou.</p>
+        <div class="ctas rise d3">
+          <a class="btn btn-main js-wa" href="#" target="_blank" rel="noopener" data-msg="trial"><svg><use href="#i-wa"/></svg>Marcar aula experimental</a>
+          <a class="btn btn-ghost" href="#horarios">Ver horários</a>
+        </div>
+        <div class="hero-meta rise d3">
+          <span><i></i>Seg · Ter · Qui, 20h</span>
+          <span><i></i>Aceita Wellhub</span>
+          <span><i></i>Iniciantes bem-vindos</span>
+        </div>
+      </div>
+      <div class="stage rise d2">
+        <img class="ring" src="assets/logo.webp" alt="" aria-hidden="true">
+        <button class="dog" id="dog" type="button" aria-label="Guardião, o Dobermann mascote da Black Guardian. Toque para ele falar.">
+          <span class="dog-art" data-dog="h" data-vb="0 0 400 760"></span>
+        </button>
+        <div class="bubble" id="bubble" aria-live="polite"><small class="tag" id="bubbleTag"></small><b id="bubbleTitle">Oss!</b><span id="bubbleText">Eu guardo o tatame. Bora treinar?</span></div>
+        <span class="hint" id="hint">Toque no guardião</span>
+      </div>
+    </div>
+    <div class="belt" aria-hidden="true"><div class="belt-bar"><i></i><i></i><i></i></div></div>
+  </section>
+
+  <section id="professor" class="coach">
+    <div class="wrap coach-grid">
+      <figure class="portrait">
+        <img src="assets/isaak.webp" alt="Professor Isaak Avelar de kimono da Black Guardian e faixa preta" width="530" height="660" loading="lazy">
+        <figcaption><span>Faixa preta</span><span>16 anos de jiu-jitsu</span></figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow">Fundador e professor</p>
+        <h2>Isaak Avelar</h2>
+        <p class="role">Professor · Faixa preta de jiu-jitsu</p>
+        <blockquote class="quote">“Comecei no jiu-jitsu há 16 anos, movido pela vontade de evoluir e encontrar no esporte um propósito maior. Desde então, a arte suave se tornou parte da minha vida, dentro e fora do tatame.”</blockquote>
+        <ul class="titles">
+          <li><b>3º</b><span>Campeonato Mundial de Jiu-Jitsu<small>CBJJE</small></span></li>
+          <li><b>1º</b><span>Open IBJJF Betim<small>Campeão</small></span></li>
+          <li><b>1º</b><span>Campeonatos regionais<small>Campeão em vários torneios</small></span></li>
+        </ul>
+        <div class="tree" aria-label="Linhagem"><span>Faixa preta por</span><b>Guizão · AREPT Ouro Preto</b><i></i><b>Isaak Avelar</b><i></i><b>Black Guardian</b></div>
+        <a class="ig" href="https://www.instagram.com/isaak_avelarbjj/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@isaak_avelarbjj</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="modalidades" class="programs">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Modalidades</p><h2>Um tatame,<br>quatro turmas</h2></div>
+        <p>Do primeiro dia de kimono ao treino de competição. Fale com o professor para saber qual turma combina com você ou com seu filho.</p>
+      </div>
+      <div class="prog-grid">
+        <article class="prog">
+          <div class="ph" data-photo="adulto"><span class="ph-label">Foto · turma adulta</span></div>
+          <h3>Adulto misto</h3>
+          <p>Técnica, drills e rola. Iniciantes e graduados treinam juntos, cada um no seu ritmo.</p>
+          <p class="for">A partir de 16 anos</p>
+        </article>
+        <article class="prog">
+          <div class="ph" data-photo="feminino"><span class="ph-label">Foto · turma feminina</span></div>
+          <h3>Feminino</h3>
+          <p>Ambiente seguro para mulheres aprenderem, ganharem confiança e condicionamento.</p>
+          <p class="for">Mulheres de todos os níveis</p>
+        </article>
+        <article class="prog">
+          <div class="ph" data-photo="kids"><span class="ph-label">Foto · turma infantil</span></div>
+          <h3>Infantil</h3>
+          <p>Coordenação, disciplina e respeito com brincadeiras e fundamentos adaptados à idade.</p>
+          <p class="for">Crianças</p>
+        </article>
+        <article class="prog">
+          <div class="ph" data-photo="defesa"><span class="ph-label">Foto · defesa pessoal</span></div>
+          <h3>Defesa pessoal</h3>
+          <p>Saídas de agarre, controle e posicionamento para situações reais, com a eficiência do jiu-jitsu.</p>
+          <p class="for">Sem experiência prévia</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="horarios">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Horários</p><h2>Grade da<br>semana</h2></div>
+        <p>Treinos à noite, depois do trabalho. Confirme a turma pelo WhatsApp antes da primeira visita.</p>
+      </div>
+      <div class="week" role="table" aria-label="Horários semanais">
+        <div class="day" role="row"><h4>Seg</h4><div class="slot"><b>20:00</b><span>até 21:00 · Jiu-jitsu</span></div></div>
+        <div class="day" role="row"><h4>Ter</h4><div class="slot"><b>20:00</b><span>até 21:00 · Jiu-jitsu</span></div></div>
+        <div class="day off" role="row"><h4>Qua</h4><span class="rest">Sem aula</span></div>
+        <div class="day" role="row"><h4>Qui</h4><div class="slot"><b>20:00</b><span>até 21:00 · Jiu-jitsu</span></div></div>
+        <div class="day off" role="row"><h4>Sex</h4><span class="rest">Sem aula</span></div>
+        <div class="day off" role="row"><h4>Sáb</h4><span class="rest">Sem aula</span></div>
+        <div class="day off" role="row"><h4>Dom</h4><span class="rest">Sem aula</span></div>
+      </div>
+      <div class="sched-note">
+        <span>Horários podem mudar em feriados.</span>
+        <a class="btn btn-ghost js-wa" href="#" target="_blank" rel="noopener" data-msg="schedule"><svg><use href="#i-wa"/></svg>Confirmar turma</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="first">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Primeira aula</p><h2>Do sofá ao<br>tatame em 3 passos</h2></div>
+        <p>Nunca treinou? Ótimo. Toda faixa preta já foi faixa branca no primeiro dia.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>Chame no WhatsApp</h3><p>Fale direto com o professor Isaak, diga seu nível e escolha o melhor dia.</p></div>
+        <div class="step"><span class="n">2</span><h3>Venha confortável</h3><p>Se não tiver kimono, venha com roupa de treino. Traga água e chinelo.</p></div>
+        <div class="step"><span class="n">3</span><h3>Treine com a equipe</h3><p>Aquecimento, técnica e prática guiada. Você sai sabendo sua primeira posição.</p></div>
+      </div>
+      <div class="first-cta">
+        <a class="btn btn-dark js-wa" href="#" target="_blank" rel="noopener" data-msg="trial"><svg><use href="#i-wa"/></svg>Quero minha aula experimental</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipe">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">A equipe</p><h2>Família<br>Black Guardian</h2></div>
+        <p>Treino duro, gente boa. Acompanhe o dia a dia da academia no Instagram.</p>
+      </div>
+      <div class="gallery">
+        <div class="ph g1" data-photo="g1"><span class="ph-label">Foto da equipe · grupo</span></div>
+        <div class="ph g2" data-photo="g2"><span class="ph-label">Foto · treino</span></div>
+        <div class="ph g3" data-photo="g3"><span class="ph-label">Foto · graduação</span></div>
+        <div class="ph g4" data-photo="g4"><span class="ph-label">Foto</span></div>
+        <div class="ph g5" data-photo="g5"><span class="ph-label">Foto · competição</span></div>
+        <div class="ph g6" data-photo="g6"><span class="ph-label">Foto · kids</span></div>
+        <div class="ph g7" data-photo="g7"><span class="ph-label">Foto · rola</span></div>
+      </div>
+      <div class="insta-row">
+        <span>@blackguardianbr</span>
+        <a class="js-ig" href="https://www.instagram.com/blackguardianbr/" target="_blank" rel="noopener">Seguir no Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="local" class="place">
+    <div class="wrap place-grid">
+      <div>
+        <p class="eyebrow">Onde treinar</p>
+        <p class="addr">R. Julita Nogueira Soares, 816<small>Santa Terezinha, Belo Horizonte, MG · CEP 31360-040<br>Próximo ao conjunto Cojan e à praça da Rua Julita.</small></p>
+        <dl class="facts">
+          <div><dt>Aulas</dt><dd>Segunda, terça e quinta, 20h às 21h</dd></div>
+          <div><dt>Planos</dt><dd>Mensalidade direta ou pelo Wellhub</dd></div>
+          <div><dt>Contato</dt><dd>WhatsApp do professor Isaak</dd></div>
+        </dl>
+        <div class="ctas">
+          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=R.+Julita+Nogueira+Soares,+816,+Santa+Terezinha,+Belo+Horizonte,+MG" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          <a class="btn btn-ghost" href="https://wellhub.com/pt-br/search/partners/black-guardian-jiu-jitsu-santa-terezinha/" target="_blank" rel="noopener">Ver no Wellhub</a>
+        </div>
+      </div>
+      <a class="mapcard" href="https://www.google.com/maps/search/?api=1&query=R.+Julita+Nogueira+Soares,+816,+Santa+Terezinha,+Belo+Horizonte,+MG" target="_blank" rel="noopener" aria-label="Abrir endereço no Google Maps">
+        <canvas id="map" aria-hidden="true"></canvas>
+        <span class="pin"><img src="assets/logo.webp" alt=""><i></i></span>
+        <span class="open">Como chegar ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap faq-grid">
+      <div><p class="eyebrow">Dúvidas</p><h2>Antes do<br>primeiro treino</h2></div>
+      <div>
+        <details><summary>Preciso ter experiência ou preparo físico?</summary><p>Não. O condicionamento vem com o treino. O professor adapta a aula para quem está começando.</p></details>
+        <details><summary>Preciso comprar kimono para a primeira aula?</summary><p>Não. Na aula experimental, venha com roupa de treino confortável. Depois, o professor orienta sobre o kimono.</p></details>
+        <details><summary>A academia aceita Wellhub?</summary><p>Sim, a Black Guardian é parceira Wellhub. Confira seu plano no aplicativo ou fale com a gente sobre planos diretos.</p></details>
+        <details><summary>A partir de que idade as crianças podem treinar?</summary><p>Chame no WhatsApp com a idade da criança e o professor indica a melhor turma e horário.</p></details>
+        <details><summary>Mulheres treinam junto com os homens?</summary><p>Há turma feminina e também a turma adulta mista. Você escolhe onde se sente melhor.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <img class="seal" src="assets/logo.webp" alt="" aria-hidden="true">
+    <div class="wrap">
+      <p class="eyebrow">Black Guardian Jiu-Jitsu</p>
+      <h2>Sua faixa<br>começa <span class="worn">hoje.</span></h2>
+      <p>Mande uma mensagem para o professor Isaak e marque sua aula experimental. Resposta direto no WhatsApp.</p>
+      <div class="ctas">
+        <a class="btn btn-main js-wa" href="#" target="_blank" rel="noopener" data-msg="trial"><svg><use href="#i-wa"/></svg>Falar com o professor</a>
+        <a class="btn btn-ghost js-ig" href="https://www.instagram.com/blackguardianbr/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@blackguardianbr</a>
+      </div>
+      <div class="wa-num">WhatsApp <code id="waShown"></code> <button type="button" id="copyWa">Copiar</button></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="f-brand"><img src="assets/logo.webp" alt="" width="32" height="32">© <span id="yr">2026</span> Black Guardian Jiu-Jitsu · Santa Terezinha, BH</span>
+    <span><a class="js-ig" href="https://www.instagram.com/blackguardianbr/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wellhub.com/pt-br/search/partners/black-guardian-jiu-jitsu-santa-terezinha/" target="_blank" rel="noopener">Wellhub</a></span>
+  </div>
+</footer>
+
+<div class="guard" id="guard">
+  <a class="say js-wa" id="say" href="#" target="_blank" rel="noopener" data-msg="trial"><svg class="say-wa"><use href="#i-wa"/></svg><span>Bora marcar sua <b>aula experimental?</b></span></a>
+  <a class="fab js-wa" href="#" target="_blank" rel="noopener" data-msg="trial" aria-label="Marcar aula experimental pelo WhatsApp">
+    <span class="dog-art" data-dog="f" data-vb="10 0 380 640"></span>
+  </a>
+</div>
+
+<script>
+/* ===== CONFIGURAÇÃO: troque aqui ===== */
+const CONFIG = {
+  // WhatsApp do professor: só números, com 55 + DDD. Ex.: 5531987654321
+  whatsapp: "553192644452",
+  instagram: "https://www.instagram.com/blackguardianbr/",
+  // Grade: um item por aula. Dia vazio = "Sem aula".
+  schedule: {
+    Seg: [["20:00","21:00","Jiu-jitsu adulto"]],
+    Ter: [["20:00","21:00","Jiu-jitsu adulto"]],
+    Qua: [],
+    Qui: [["20:00","21:00","Jiu-jitsu adulto"]],
+    Sex: [], "Sáb": [], Dom: []
+  },
+  // Fotos: caminho de cada imagem (ex.: "assets/turma-adulta.jpg"). Vazio = textura de kimono.
+  photos: { adulto:"", feminino:"", kids:"", defesa:"", g1:"", g2:"", g3:"", g4:"", g5:"", g6:"", g7:"" }
+};
+const MSGS = {
+  hero:     "Olá, professor Isaak! Vi o site da Black Guardian e quero agendar uma aula.",
+  trial:    "Olá, professor Isaak! Vi o site da Black Guardian e quero marcar uma aula experimental de jiu-jitsu.",
+  schedule: "Olá, professor Isaak! Queria confirmar os horários das turmas da Black Guardian."
+};
+/* ===================================== */
+
+document.querySelectorAll(".js-wa").forEach(a => {
+  a.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(MSGS[a.dataset.msg] || MSGS.trial);
+});
+document.querySelectorAll(".js-ig").forEach(a => a.href = CONFIG.instagram);
+document.querySelector(".week").innerHTML = Object.entries(CONFIG.schedule).map(([day, slots]) =>
+  `<div class="day${slots.length ? "" : " off"}" role="row"><h4>${day}</h4>${slots.length
+    ? `<div class="slots">${slots.map(([ini, fim, turma]) => `<div class="slot"><b>${ini}</b><span>até ${fim} · ${turma}</span></div>`).join("")}</div>`
+    : `<span class="rest">Sem aula</span>`}</div>`).join("");
+document.querySelectorAll("[data-photo]").forEach(el => {
+  const src = CONFIG.photos[el.dataset.photo];
+  if (!src) return;
+  const img = new Image();
+  img.alt = el.querySelector(".ph-label")?.textContent || "";
+  img.loading = "lazy"; img.src = src;
+  el.prepend(img); el.classList.add("has-img");
+});
+
+const n = CONFIG.whatsapp.replace(/\D/g,"");
+const pretty = n.length >= 12 ? `+${n.slice(0,2)} (${n.slice(2,4)}) ${n.slice(4,-4)}-${n.slice(-4)}` : n;
+document.getElementById("waShown").textContent = pretty;
+document.getElementById("copyWa").addEventListener("click", e => {
+  const btn = e.currentTarget;
+  navigator.clipboard?.writeText(pretty).then(() => { btn.textContent = "Copiado"; setTimeout(() => btn.textContent = "Copiar", 1600); })
+    .catch(() => { const r = document.createRange(); r.selectNodeContents(document.getElementById("waShown")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+});
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+function dogSVG(uid, vb){
+  // Guardião: o Dobermann da logo, com orelhas, olhos e kimono animáveis
+  const K = "#bdbf9a", INK = "#0b0b08", GI = "#14140f", IMG = "assets/guardiao.webp";
+  const earL = "30,0 150,0 150,212 128,226 96,240 52,262 30,262", earR = "370,0 250,0 250,212 272,226 304,240 348,262 370,262";
+  const head = extra => `<image href="${IMG}" width="400" height="660" ${extra}/>`;
+  const eyes = [[122,362],[279,362]];
+  return `<svg class="dogsvg" viewBox="${vb || "0 0 400 760"}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <mask id="${uid}m"><rect width="400" height="760" fill="#fff"/><polygon points="${earL}" fill="#000"/><polygon points="${earR}" fill="#000"/></mask>
+    <clipPath id="${uid}l"><polygon points="${earL}"/></clipPath><clipPath id="${uid}r"><polygon points="${earR}"/></clipPath>
+    <radialGradient id="${uid}g"><stop offset="0" stop-color="#f6f8d4" stop-opacity=".95"/><stop offset=".35" stop-color="${K}" stop-opacity=".55"/><stop offset="1" stop-color="${K}" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g class="d-head">
+    <path d="M146 600 L200 704 L254 600Z" fill="${INK}"/>
+    ${head(`mask="url(#${uid}m)"`)}
+    <g class="ear ear-l">${head(`clip-path="url(#${uid}l)"`)}</g>
+    <g class="ear ear-r">${head(`clip-path="url(#${uid}r)"`)}</g>
+    ${eyes.map(([x,y]) => `<ellipse class="lid" cx="${x}" cy="${y}" rx="25" ry="13" fill="${INK}"/>`).join("")}
+    ${eyes.map(([x,y]) => `<circle class="glow" cx="${x+4}" cy="${y+1}" r="18" fill="url(#${uid}g)"/>`).join("")}
+  </g>
+  <g class="d-body">
+    <path d="M-20 770 C-6 692 26 652 72 634 L152 606 L200 706 L248 606 L328 634 C374 652 406 692 420 770Z" fill="${GI}" stroke="${K}" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M66 700 Q88 668 118 652 M334 700 Q312 668 282 652" stroke="${K}" stroke-width="3" fill="none" stroke-linecap="round" opacity=".45"/>
+    <path d="M248 604 L276 614 L206 770 L174 770Z" fill="${GI}" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M152 604 L124 614 L194 770 L226 770Z" fill="${GI}" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M139 611 L208 770 M261 611 L230 680" stroke="${K}" stroke-width="1.6" stroke-dasharray="5 5" fill="none" opacity=".7"/>
+    <g transform="translate(300 690) rotate(-8)"><rect x="-17" y="-11" width="34" height="22" fill="none" stroke="${K}" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-family="Big Shoulders Stencil Display, Impact, sans-serif" font-weight="900" font-size="15" fill="${K}">BG</text></g>
+  </g></svg>`;
+}
+document.querySelectorAll("[data-dog]").forEach(el => el.innerHTML = dogSVG(el.dataset.dog, el.dataset.vb));
+
+/* Guardião pisca de vez em quando */
+(function(){
+  const svgs = [...document.querySelectorAll(".dogsvg")];
+  const blink = svg => { svg.classList.add("blink"); setTimeout(() => svg.classList.remove("blink"), 150); };
+  svgs.forEach(svg => (function loop(){ setTimeout(() => { blink(svg); loop(); }, 2600 + Math.random()*3600); })());
+})();
+
+/* Mascote: inclina seguindo o cursor, late e fala quando tocado */
+(function(){
+  const dog = document.getElementById("dog"), bubble = document.getElementById("bubble"),
+        text = document.getElementById("bubbleText"), hint = document.getElementById("hint"),
+        stage = dog.parentElement;
+  // tipo: fala | golpe | grito | pensa | ponto
+  const lines = [
+    ["fala", "", "Oss!", "Eu guardo o tatame. Bora treinar?"],
+    ["golpe", "Finalização", "Triângulo", "Pernas fechadas no pescoço e no braço. Bate ou dorme."],
+    ["ponto", "+2", "Raspagem", "Quem estava por baixo agora está por cima."],
+    ["grito", "", "Oss!", ""],
+    ["golpe", "Finalização", "Kimura", "Pegada em figura 4 no ombro. Clássico que não envelhece."],
+    ["pensa", "", "", "Hoje é dia de drill… 50 fugas de quadril."],
+    ["golpe", "Finalização", "Armlock", "Quadril no cotovelo, polegar do adversário para cima."],
+    ["ponto", "+3", "Passagem de guarda", "Passou as pernas, estabilizou, pontuou."],
+    ["fala", "", "Faixa branca?", "Todo faixa preta começou assim. Vem!"],
+    ["golpe", "Finalização", "Mata-leão", "Pelas costas, braço no pescoço. Sem saída."],
+    ["grito", "", "Bate!", "antes que estale"],
+    ["golpe", "Finalização", "Omoplata", "O ombro preso pelas pernas. Bonito e cruel."],
+    ["ponto", "+4", "Montada", "Sentou no peito, joelhos no chão. Quatro pontos."],
+    ["golpe", "Estrangulamento", "Cruzado", "Mãos fundas na gola, direto da guarda fechada."],
+    ["pensa", "", "", "Será que a próxima listra sai esse mês?"],
+    ["golpe", "Finalização", "Americana", "A kimura ao contrário, favorita de quem está por cima."],
+    ["ponto", "+4", "Pegada nas costas", "Ganchos colocados. O caminho do mata-leão."],
+    ["golpe", "Estrangulamento", "Guilhotina", "Para quem entra no single leg sem cuidar do pescoço."],
+    ["grito", "", "Mais um rola!", ""],
+    ["golpe", "Estrangulamento", "Ezequiel", "Feito com a própria manga. Até de dentro da montada."],
+    ["ponto", "+2", "Queda", "Começou em pé, terminou no controle."],
+    ["fala", "", "Oss, professor!", "O Isaak tem 16 anos de jiu-jitsu."],
+    ["golpe", "Finalização", "Chave de pé reta", "Calcanhar na axila, quadril para frente."],
+    ["pensa", "", "", "Respira, desce o quadril, recompõe a guarda…"],
+    ["fala", "", "Aula experimental", "Chama no WhatsApp e marca a sua."]
+  ];
+  let i = 0, timer;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce && matchMedia("(pointer: fine)").matches) {
+    addEventListener("pointermove", e => {
+      const r = stage.getBoundingClientRect();
+      const x = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width/2)) / (innerWidth/2)));
+      const y = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height/2)) / (innerHeight/2)));
+      dog.style.transform = `rotateY(${x*10}deg) rotateX(${-y*5}deg)`;
+    }, {passive:true});
+  }
+  setTimeout(() => bubble.classList.add("hide"), 4500);
+  dog.addEventListener("click", () => {
+    i = (i + 1) % lines.length;
+    const [type, tag, title, body] = lines[i];
+    bubble.className = "bubble " + (type === "ponto" ? "golpe" : type);
+    document.getElementById("bubbleTag").textContent = type === "ponto" ? "Pontuação " + tag : tag;
+    document.getElementById("bubbleTitle").textContent = title;
+    text.textContent = body;
+    if (type === "ponto") {
+      const chip = document.createElement("div");
+      chip.className = "pts"; chip.innerHTML = `${tag}<small>${title}</small>`;
+      stage.appendChild(chip); setTimeout(() => chip.remove(), 1500);
+    }
+    hint.hidden = true;
+    dog.classList.remove("hop"); void dog.offsetWidth; dog.classList.add("hop");
+    const svg = dog.querySelector(".dogsvg");
+    svg.classList.add("bark"); setTimeout(() => svg.classList.remove("bark"), 650);
+    clearTimeout(timer); timer = setTimeout(() => bubble.classList.add("hide"), 4000);
+  });
+})();
+
+/* Guardião flutuante: aparece quando o hero sai da tela, chama para a aula e às vezes late */
+(function(){
+  const guard = document.getElementById("guard"), hero = document.querySelector(".hero");
+  const svg = guard.querySelector(".dogsvg");
+  guard.classList.add("hidden");
+  new IntersectionObserver(([en]) => guard.classList.toggle("hidden", en.isIntersecting), {threshold:.15}).observe(hero);
+  let quietTimer;
+  const wake = () => {
+    guard.classList.remove("quiet");
+    svg.classList.add("bark", "perk"); setTimeout(() => svg.classList.remove("bark", "perk"), 600);
+    clearTimeout(quietTimer); quietTimer = setTimeout(() => guard.classList.add("quiet"), 6000);
+  };
+  setInterval(() => { if (!guard.classList.contains("hidden") && !document.hidden) wake(); }, 18000);
+  new IntersectionObserver(([en]) => { if (!en.isIntersecting) setTimeout(wake, 400); }, {threshold:.15}).observe(hero);
+})();
+
+/* Mapa estilizado no canvas */
+(function(){
+  const c = document.getElementById("map"), ctx = c.getContext("2d");
+  function draw(){
+    const r = c.getBoundingClientRect(), d = devicePixelRatio || 1;
+    c.width = r.width * d; c.height = r.height * d; ctx.setTransform(d,0,0,d,0,0);
+    const w = r.width, h = r.height;
+    ctx.fillStyle = "#1c1d15"; ctx.fillRect(0,0,w,h);
+    let s = 7; const rnd = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    ctx.strokeStyle = "rgba(189,191,154,.08)"; ctx.lineWidth = 1;
+    for (let k = 0; k < 26; k++) { ctx.beginPath(); const y = rnd()*h; ctx.moveTo(0,y); ctx.lineTo(w, y + (rnd()-.5)*120); ctx.stroke(); }
+    for (let k = 0; k < 22; k++) { ctx.beginPath(); const x = rnd()*w; ctx.moveTo(x,0); ctx.lineTo(x + (rnd()-.5)*140, h); ctx.stroke(); }
+    ctx.strokeStyle = "rgba(189,191,154,.28)"; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.moveTo(-10, h*.62); ctx.bezierCurveTo(w*.3, h*.48, w*.6, h*.58, w+10, h*.42); ctx.stroke();
+    ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(w*.5, -10); ctx.lineTo(w*.5, h+10); ctx.stroke();
+    ctx.fillStyle = "rgba(189,191,154,.08)"; ctx.fillRect(w*.58, h*.16, w*.16, h*.14);
+    ctx.fillStyle = "rgba(162,163,143,.75)"; ctx.font = "500 11px 'IBM Plex Mono', monospace";
+    ctx.fillText("R. JULITA NOGUEIRA SOARES", 14, h*.62 - 14);
+  }
+  draw(); addEventListener("resize", draw);
+})();
+</script>
+
+</body>
+</html>
