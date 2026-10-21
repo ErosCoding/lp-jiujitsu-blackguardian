@@ -198,9 +198,20 @@ section{padding-block:clamp(64px,10vw,120px)}
   radial-gradient(circle,rgba(189,191,154,.05) 0 2px,transparent 2.5px);
   background-size:9px 9px,9px 9px;background-position:0 0,4.5px 4.5px;
   display:flex;align-items:flex-end;overflow:hidden;position:relative;border-radius:2px}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph img,.ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ph-label{position:relative;z-index:2;margin:14px;padding:7px 10px;background:rgba(11,11,8,.8);border:1px dashed rgba(189,191,154,.35);font:500 11px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .ph.has-img .ph-label{display:none}
+.gallery .ph.has-img{cursor:zoom-in}
+.gallery .ph.has-img .ph-label{display:block;border-style:solid;color:var(--khaki);opacity:0;translate:0 6px;transition:opacity .3s ease,translate .3s ease}
+.gallery .ph.has-img:hover .ph-label,.gallery .ph.has-img:focus-visible .ph-label{opacity:1;translate:0 0}
+.prog .ph.has-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,11,8,.5));pointer-events:none}
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(6,6,4,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));opacity:0;pointer-events:none;transition:opacity .3s ease}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:min(1200px,100%);max-height:84vh;object-fit:contain;border-radius:2px;scale:.96;transition:scale .35s cubic-bezier(.2,.8,.2,1)}
+.lightbox.open img{scale:1}
+.lightbox p{margin-top:12px;font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--khaki);text-align:center}
+.lightbox button{position:absolute;top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--ink);color:var(--gi);font:400 22px/1 var(--f-body);cursor:pointer}
+.final::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,var(--ink) 25%,rgba(11,11,8,.7) 60%,rgba(11,11,8,.85)),url("assets/equipe-banner.webp") center 30%/cover no-repeat;opacity:.55;filter:grayscale(.5)}
 
 /* Horários */
 .week{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--line);font-variant-numeric:tabular-nums}
@@ -239,10 +250,10 @@ section{padding-block:clamp(64px,10vw,120px)}
 
 /* Galeria */
 .gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(120px,15vw,190px);gap:10px}
-.g1{grid-column:span 3;grid-row:span 2}.g2{grid-column:span 3}.g3{grid-column:span 2}.g4{grid-column:span 1}.g5{grid-column:span 2}.g6{grid-column:span 2}.g7{grid-column:span 2}
+.g1{grid-column:span 3;grid-row:span 2}.g2{grid-column:span 3}.g3{grid-column:span 2}.g4{grid-column:span 1}.g5,.g6,.g7,.g8,.g9,.g10{grid-column:span 2}
 @media (max-width:760px){
   .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
-  .g1{grid-column:span 2;grid-row:span 2}.g2,.g5{grid-column:span 2}.g3,.g4,.g6,.g7{grid-column:span 1}
+  .g1{grid-column:span 2;grid-row:span 2}.g2,.g5,.g8{grid-column:span 2}.g3,.g4,.g6,.g7,.g9,.g10{grid-column:span 1}
 }
 .insta-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;margin-top:24px;color:var(--muted)}
 .insta-row a{font:600 15px/1 var(--f-body);text-decoration:none;color:var(--khaki);border-bottom:2px solid var(--khaki);padding-bottom:4px}
@@ -522,13 +533,16 @@ footer a:hover{color:var(--khaki)}
         <p>Treino duro, gente boa. Acompanhe o dia a dia da academia no Instagram.</p>
       </div>
       <div class="gallery">
-        <div class="ph g1" data-photo="g1"><span class="ph-label">Foto da equipe · grupo</span></div>
-        <div class="ph g2" data-photo="g2"><span class="ph-label">Foto · treino</span></div>
-        <div class="ph g3" data-photo="g3"><span class="ph-label">Foto · graduação</span></div>
-        <div class="ph g4" data-photo="g4"><span class="ph-label">Foto</span></div>
-        <div class="ph g5" data-photo="g5"><span class="ph-label">Foto · competição</span></div>
-        <div class="ph g6" data-photo="g6"><span class="ph-label">Foto · kids</span></div>
-        <div class="ph g7" data-photo="g7"><span class="ph-label">Foto · rola</span></div>
+        <div class="ph g1" data-photo="g1"><span class="ph-label">Equipe Black Guardian</span></div>
+        <div class="ph g2" data-photo="g2"><span class="ph-label">Entrega de certificados</span></div>
+        <div class="ph g3" data-photo="g3"><span class="ph-label">Professor e a turma kids</span></div>
+        <div class="ph g4" data-photo="g4"><span class="ph-label">Graduação kids</span></div>
+        <div class="ph g5" data-photo="g5"><span class="ph-label">Seminário</span></div>
+        <div class="ph g6" data-photo="g6"><span class="ph-label">Aquecimento kids</span></div>
+        <div class="ph g7" data-photo="g7"><span class="ph-label">Aula adulta</span></div>
+        <div class="ph g8" data-photo="g8"><span class="ph-label">Equipe</span></div>
+        <div class="ph g9" data-photo="g9"><span class="ph-label">Turma das meninas</span></div>
+        <div class="ph g10" data-photo="g10"><span class="ph-label">Graduação</span></div>
       </div>
       <div class="insta-row">
         <span>@blackguardianbr</span>
@@ -595,6 +609,8 @@ footer a:hover{color:var(--khaki)}
   </div>
 </footer>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada"><button type="button" id="lbClose" aria-label="Fechar">×</button><figure style="margin:0"><img id="lbImg" alt=""><p id="lbCap"></p></figure></div>
+
 <div class="guard" id="guard">
   <a class="say js-wa" id="say" href="#" target="_blank" rel="noopener" data-msg="trial"><svg class="say-wa"><use href="#i-wa"/></svg><span>Bora marcar sua <b>aula experimental?</b></span></a>
   <a class="fab js-wa" href="#" target="_blank" rel="noopener" data-msg="trial" aria-label="Marcar aula experimental pelo WhatsApp">
@@ -617,7 +633,12 @@ const CONFIG = {
     Sex: [], "Sáb": [], Dom: []
   },
   // Fotos: caminho de cada imagem (ex.: "assets/turma-adulta.jpg"). Vazio = textura de kimono.
-  photos: { adulto:"", feminino:"", kids:"", defesa:"", g1:"", g2:"", g3:"", g4:"", g5:"", g6:"", g7:"" }
+  photos: {
+    adulto: "assets/turma-adulta.webp", feminino: "assets/feminino.mp4", kids: "assets/infantil.webp", defesa: "assets/defesa-pessoal.webp",
+    g1: "assets/equipe-banner.webp", g2: "assets/graduacao-certificados.webp", g3: "assets/kids-professor.webp", g4: "assets/graduacao-kids.webp",
+    g5: "assets/seminario.webp", g6: "assets/kids-aquecimento.webp", g7: "assets/aula-alinhamento.webp",
+    g8: "assets/equipe-kimonos.webp", g9: "assets/turma-meninas.webp", g10: "assets/graduacao-bracos.webp"
+  }
 };
 const MSGS = {
   hero:     "Olá, professor Isaak! Vi o site da Black Guardian e quero agendar uma aula.",
@@ -637,10 +658,17 @@ document.querySelector(".week").innerHTML = Object.entries(CONFIG.schedule).map(
 document.querySelectorAll("[data-photo]").forEach(el => {
   const src = CONFIG.photos[el.dataset.photo];
   if (!src) return;
-  const img = new Image();
-  img.alt = el.querySelector(".ph-label")?.textContent || "";
-  img.loading = "lazy"; img.src = src;
-  el.prepend(img); el.classList.add("has-img");
+  const label = el.querySelector(".ph-label")?.textContent || "";
+  let media;
+  if (/\.mp4$/i.test(src)) {
+    media = document.createElement("video");
+    Object.assign(media, {src, muted:true, loop:true, playsInline:true, autoplay:true, preload:"metadata"});
+    media.poster = src.replace(/\.mp4$/i, "-poster.webp");
+    media.setAttribute("aria-label", label);
+  } else {
+    media = new Image(); media.alt = label; media.loading = "lazy"; media.decoding = "async"; media.src = src;
+  }
+  el.prepend(media); el.classList.add("has-img");
 });
 
 const n = CONFIG.whatsapp.replace(/\D/g,"");
@@ -825,6 +853,20 @@ document.querySelectorAll("[data-dog]").forEach(el => el.innerHTML = dogSVG(el.d
   };
   addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, {passive:true});
   update();
+})();
+
+/* Galeria: toque para ampliar */
+(function(){
+  const lb = document.getElementById("lightbox"), img = document.getElementById("lbImg"), cap = document.getElementById("lbCap");
+  const close = () => lb.classList.remove("open");
+  document.querySelectorAll(".gallery .ph.has-img").forEach(el => {
+    el.tabIndex = 0; el.setAttribute("role", "button");
+    const open = () => { const i = el.querySelector("img"); img.src = i.src; img.alt = i.alt; cap.textContent = i.alt; lb.classList.add("open"); };
+    el.addEventListener("click", open);
+    el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+  lb.addEventListener("click", e => { if (e.target !== img) close(); });
+  addEventListener("keydown", e => { if (e.key === "Escape") close(); });
 })();
 
 /* Mapa estilizado no canvas */
