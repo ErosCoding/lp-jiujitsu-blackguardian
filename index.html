@@ -241,6 +241,18 @@ section{padding-block:clamp(64px,10vw,120px)}
   .slot span{margin-top:0}
 }
 
+/* Planos */
+.plans{padding-top:clamp(16px,3vw,40px)}
+.plan-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px}
+.plan{min-width:0;border:1px solid var(--line);padding:28px 24px;display:grid;gap:12px;align-content:start;transition:border-color .3s ease,transform .3s ease}
+.plan:hover{border-color:var(--khaki);transform:translateY(-3px)}
+.plan .btn{margin-top:8px;justify-self:start}
+.plan-tag{font:500 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--khaki)}
+.plan h3{font-size:clamp(30px,3vw,40px)}
+.plan p:not(.plan-tag){color:var(--muted)}
+.plan-main{background:var(--mat-2);border-color:var(--khaki-dim)}
+@media (max-width:860px){.plan-grid{grid-template-columns:1fr}}
+
 /* Primeira aula (faixa cáqui) */
 .first{background:var(--khaki);color:var(--ink)}
 .first .eyebrow{color:#3a3b2c}
@@ -404,6 +416,7 @@ footer a:hover{color:var(--khaki)}
       <a href="#professor">Professor</a>
       <a href="#modalidades">Modalidades</a>
       <a href="#horarios">Horários</a>
+      <a href="#planos">Planos</a>
       <a href="#local">Local</a>
     </nav>
     <a class="btn btn-main js-wa" href="#" target="_blank" rel="noopener" data-msg="hero"><svg><use href="#i-wa"/></svg><span>Agendar aula</span></a>
@@ -423,7 +436,7 @@ footer a:hover{color:var(--khaki)}
         </div>
         <div class="hero-meta rise d3">
           <span><i></i>Seg a sex, 7h às 21h</span>
-          <span><i></i>Aceita Wellhub</span>
+          <span><i></i>Wellhub e TotalPass</span>
           <span><i></i>Iniciantes bem-vindos</span>
         </div>
       </div>
@@ -512,6 +525,35 @@ footer a:hover{color:var(--khaki)}
     </div>
   </section>
 
+  <section id="planos" class="plans">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Planos</p><h2>Escolha como<br>vai treinar</h2></div>
+        <p>Plano direto com a academia ou pelo benefício da sua empresa. Em qualquer caso, a primeira aula experimental é só chamar no WhatsApp.</p>
+      </div>
+      <div class="plan-grid">
+        <article class="plan plan-main">
+          <p class="plan-tag">Direto com a academia</p>
+          <h3>Planos Black Guardian</h3>
+          <p>Todas as opções de plano e valores, com contratação online pelo Next Fit.</p>
+          <a class="btn btn-main js-plans" href="https://venda.nextfit.com.br/e68c27f5-8c8d-4c39-99ce-257499d4e65e" target="_blank" rel="noopener">Ver planos e valores ↗</a>
+        </article>
+        <article class="plan">
+          <p class="plan-tag">Benefício corporativo</p>
+          <h3>Wellhub</h3>
+          <p>A Black Guardian é parceira. Faça check-in pelo app e venha treinar.</p>
+          <a class="btn btn-ghost" href="https://wellhub.com/pt-br/search/partners/black-guardian-jiu-jitsu-santa-terezinha/" target="_blank" rel="noopener">Ver no Wellhub ↗</a>
+        </article>
+        <article class="plan">
+          <p class="plan-tag">Benefício corporativo</p>
+          <h3>TotalPass</h3>
+          <p>Aceitamos TotalPass. Confira no app se o seu plano inclui a academia.</p>
+          <a class="btn btn-ghost js-wa" href="#" target="_blank" rel="noopener" data-msg="plans"><svg><use href="#i-wa"/></svg>Tirar dúvida</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="first">
     <div class="wrap">
       <div class="sec-head">
@@ -561,7 +603,7 @@ footer a:hover{color:var(--khaki)}
         <p class="addr">R. Julita Nogueira Soares, 816<small>Santa Terezinha, Belo Horizonte, MG · CEP 31360-040<br>Próximo ao conjunto Cojan e à praça da Rua Julita.</small></p>
         <dl class="facts">
           <div><dt>Aulas</dt><dd>Segunda a sexta, das 7h às 21h</dd></div>
-          <div><dt>Planos</dt><dd>Mensalidade direta ou pelo Wellhub</dd></div>
+          <div><dt>Planos</dt><dd>Planos próprios, Wellhub ou TotalPass</dd></div>
           <div><dt>Contato</dt><dd>WhatsApp do professor Isaak</dd></div>
         </dl>
         <div class="ctas">
@@ -583,7 +625,7 @@ footer a:hover{color:var(--khaki)}
       <div>
         <details><summary>Preciso ter experiência ou preparo físico?</summary><p>Não. O condicionamento vem com o treino. O professor adapta a aula para quem está começando.</p></details>
         <details><summary>Preciso comprar kimono para a primeira aula?</summary><p>Não. Na aula experimental, venha com roupa de treino confortável. Depois, o professor orienta sobre o kimono.</p></details>
-        <details><summary>A academia aceita Wellhub?</summary><p>Sim, a Black Guardian é parceira Wellhub. Confira seu plano no aplicativo ou fale com a gente sobre planos diretos.</p></details>
+        <details><summary>A academia aceita Wellhub e TotalPass?</summary><p>Sim, a Black Guardian aceita os dois. Confira se o seu plano cobre jiu-jitsu no aplicativo, ou veja os planos próprios da academia na seção Planos.</p></details>
         <details><summary>A partir de que idade as crianças podem treinar?</summary><p>Chame no WhatsApp com a idade da criança e o professor indica a melhor turma e horário.</p></details>
         <details><summary>Mulheres treinam junto com os homens?</summary><p>As duas opções existem. Tem a defesa pessoal feminina, só para mulheres, na segunda às 18h e na quarta às 20h, e as turmas de jiu-jitsu adulto, que são mistas.</p></details>
       </div>
@@ -649,7 +691,8 @@ const CONFIG = {
 const MSGS = {
   hero:     "Olá, professor Isaak! Vi o site da Black Guardian e quero agendar uma aula.",
   trial:    "Olá, professor Isaak! Vi o site da Black Guardian e quero marcar uma aula experimental de jiu-jitsu.",
-  schedule: "Olá, professor Isaak! Queria confirmar os horários das turmas da Black Guardian."
+  schedule: "Olá, professor Isaak! Queria confirmar os horários das turmas da Black Guardian.",
+  plans:    "Olá, professor Isaak! Tenho uma dúvida sobre os planos da Black Guardian (Wellhub/TotalPass)."
 };
 /* ===================================== */
 
@@ -825,7 +868,7 @@ document.querySelectorAll("[data-dog]").forEach(el => el.innerHTML = dogSVG(el.d
     [".place .eyebrow, .addr, .facts div, .place .ctas", "rv"],
     [".faq-grid > div:first-child > *, details", "rv"],
     [".final .eyebrow, .final h2, .final p, .final .ctas, .wa-num", "rv"],
-    [".insta-row, .sched-note, .first-cta", "rv"], [".step", "rv-line-host"]
+    [".insta-row, .sched-note, .first-cta", "rv"], [".plan", "rv"], [".step", "rv-line-host"]
   ];
   const els = [];
   groups.forEach(([sel, cls]) => {
